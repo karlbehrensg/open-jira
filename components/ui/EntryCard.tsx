@@ -1,4 +1,5 @@
-import { DragEvent, FC } from "react";
+import { DragEvent, FC, useContext } from "react";
+import { UIContext } from "../../context/ui";
 import {
   Card,
   CardActionArea,
@@ -13,14 +14,16 @@ interface Props {
 }
 
 export const EntryCard: FC<Props> = ({ entry }) => {
+  const { startDragging, endDragging } = useContext(UIContext);
+
   const onDragStart = (event: DragEvent) => {
     event.dataTransfer.setData("text", entry._id);
 
-    // todo: modify the state to indicate I am dragging
+    startDragging();
   };
 
   const onDragEnd = () => {
-    // todo: cancel the drag
+    endDragging();
   };
 
   return (
