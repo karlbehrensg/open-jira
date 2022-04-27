@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { DragEvent, FC } from "react";
 import {
   Card,
   CardActionArea,
@@ -13,8 +13,23 @@ interface Props {
 }
 
 export const EntryCard: FC<Props> = ({ entry }) => {
+  const onDragStart = (event: DragEvent) => {
+    event.dataTransfer.setData("text", entry._id);
+
+    // todo: modify the state to indicate I am dragging
+  };
+
+  const onDragEnd = () => {
+    // todo: cancel the drag
+  };
+
   return (
-    <Card sx={{ marginBottom: 1 }}>
+    <Card
+      sx={{ marginBottom: 1 }}
+      draggable
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
+    >
       <CardActionArea>
         <CardContent>
           <Typography sx={{ whiteSpace: "pre-line" }}>
