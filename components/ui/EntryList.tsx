@@ -13,7 +13,7 @@ export const EntryList: FC<Props> = ({ status }) => {
 
   const entriesByStatus = useMemo(
     () => entries.filter((entry) => entry.status === status),
-    [entries]
+    [entries, status]
   );
 
   return (
