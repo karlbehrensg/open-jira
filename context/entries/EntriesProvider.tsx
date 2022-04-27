@@ -14,19 +14,19 @@ const Entries_INITIAL_STATE: EntriesState = {
   entries: [
     {
       _id: uuidv4(),
-      description: "This is a demo task",
+      description: "Pending: This is a demo task",
       status: "pending",
       createdAt: Date.now(),
     },
     {
       _id: uuidv4(),
-      description: "This is a demo task",
+      description: "In-Progress: This is a demo task",
       status: "in-progress",
       createdAt: Date.now() - 1000000,
     },
     {
       _id: uuidv4(),
-      description: "This is a demo task",
+      description: "Completed: This is a demo task",
       status: "done",
       createdAt: Date.now() - 100000,
     },
