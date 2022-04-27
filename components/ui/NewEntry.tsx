@@ -1,9 +1,12 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
+import { EntriesContext } from "../../context/entries";
 import { Box, Button, TextField } from "@mui/material";
 import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 
 export const NewEntry = () => {
+  const { addNewEntry } = useContext(EntriesContext);
+
   const [isAdding, setIsAdding] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [touched, setTouched] = useState(false);
@@ -14,8 +17,10 @@ export const NewEntry = () => {
 
   const onSave = () => {
     if (inputValue.length === 0) return;
-
-    console.log({ inputValue });
+    addNewEntry(inputValue);
+    setIsAdding(false);
+    setInputValue("");
+    setTouched(false);
   };
 
   return (
@@ -33,7 +38,7 @@ export const NewEntry = () => {
             }
             error={inputValue.length <= 0 && touched}
             value={inputValue}
-            onChange={onTextFieldChanges}
+            onInput={onTextFieldChanges}
             onBlur={() => setTouched(true)}
           />
           <Box display="flex" justifyContent="space-between">
