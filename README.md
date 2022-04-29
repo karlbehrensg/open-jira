@@ -16,6 +16,13 @@ mongodb://localhost:27017/entriesdb
 
 Rename file **.env.template** to **.env**
 
+## Install all dependencies and build a dev env
+
+```
+yarn install
+yarn dev
+```
+
 ## Fill the DB with test data
 
 Call the endpoint
