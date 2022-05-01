@@ -23,6 +23,7 @@ import {
 import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { EntriesContext } from "../../context/entries";
+import { dateFunctions } from "../../utils";
 
 const validStatus: EntryStatus[] = ["pending", "in-progress", "done"];
 
@@ -69,7 +70,9 @@ const EntryPage: FC<Props> = ({ entry }) => {
           <Card>
             <CardHeader
               title={`Entry:`}
-              subheader={`Created at ${entry.createdAt} minutes ago`}
+              subheader={`Created ${dateFunctions.getFormatDistanceToNow(
+                entry.createdAt
+              )}`}
             />
             <CardContent>
               <TextField
